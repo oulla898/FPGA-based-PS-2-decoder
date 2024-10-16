@@ -1,66 +1,70 @@
-# Automatic Weather-Sensitive Door Closure System
-
-## Abstract
-
-This project develops an effective solution to address the challenge of unpredictable weather in Oman. The system is designed to automatically close doors or windows in response to adverse weather conditions, potentially saving property owners significant money and time by preventing water damage to sensitive equipment and property.
-
-## Problem Description
-
-Unpredictable weather in Oman has led to catastrophic consequences, with a single cyclone causing $162 million USD in property losses. This project aims to mitigate such losses by implementing a system that detects impending bad weather and automatically closes water entrances in homes and offices.
+# PS/2 Protocol Decoder & Loading Animation
 
 ## Introduction
 
-The project brings to life the concept of doors automatically shutting during rainstorms to protect homes and improve lifestyle. This weather-triggered door-closing system is no longer science fiction but a practical reality.
+This project implements an efficient method to decode basic keyboard inputs into binary numbers using an FPGA. The system interprets the PS/2 protocol, an old-fashioned protocol used to interface keyboards with various devices. The project aims to create a device and logic that allows users to input characters and receive their binary representation as output.
 
-## Design
+## Design Specifications
 
-The system uses two analog sensors:
-1. Force Sensor (FSR 406) - to detect wind and rain
-2. Light Sensor (LDR) - to understand ambient light conditions
+### Inputs:
+- PS/2 Clock
+- PS/2 Data
+- Switch (for mode selection)
+- FPGA Clock (50MHz)
 
-Key components:
-- Microcontroller (AVR)
-- Transistor-controlled motor
-- Pierced cup placed on the force sensor
-- Pulley system for increased torque
+### Output:
+- LED Outputs (representing encoded PS/2 protocol or loading animation)
 
-The system operates differently based on the time of day:
-- Nighttime: Triggered by force alone
-- Daytime (cloudy): Checks both light and force, triggered at lower force thresholds
+## Hardware Design
 
-## Implementation
+The project uses a single module called "prj" which controls all functionalities:
 
-The circuit incorporates:
-- Two analog sensors (FSR 406 and LDR)
-- Microcontroller as the main control unit
-- Transistor gate to control motor current
-- Motor for mechanical door closure
+1. Interfaces with the PS/2 keyboard
+2. Processes keyboard output
+3. Displays PS/2 binary representation on FPGA LEDs
+4. Implements a loading animation controlled by arrow keys
 
-Laboratory testing confirmed the design's effectiveness, with the system responding appropriately to simulated weather conditions.
+The mode of operation (decoder or loading animation) is controlled by a switch.
 
-## Simulation
+## Functional Simulation
 
-Due to the unavailability of the FSR 406 in Proteus, the force sensor was simulated using an LDR. The simulation demonstrated the system's ability to detect specific voltage conditions from the sensors and activate the motor to close the door.
+The design was validated through:
+- Simulating PS/2 clock and data input signals
+- Verifying correct conversion to binary representation
+- Testing the loading animation mode
+- Simulating fast typing to ensure correct timing functions
+
+## Design Implementation
+
+The implementation process involved:
+1. Synthesis: Converting RTL design into a netlist of logic gates and flip-flops
+2. Place and Route (PAR): Assigning specific locations on the FPGA chip for both designs
+3. Non-behavioral simulations: Verifying design correctness, performance, and timing
+
+## Results and Discussion
+
+- Successfully decoded PS/2 keyboard inputs into binary numbers on the FPGA
+- Implemented a smooth transition between encryption mode and loading animation mode
+- Achieved synchronization between keyboard inputs and FPGA outputs using the PS/2 clock
 
 ## Conclusion
 
-The project successfully developed a system capable of detecting adverse weather conditions in Oman using sensor technology integrated with mechanical mechanisms. Key achievements include:
+The project successfully:
+- Decoded keyboard inputs into binary numbers
+- Displayed results on the FPGA
+- Implemented a loading animation feature
+- Demonstrated efficient communication between PS/2 keyboard and FPGA
+- Achieved smooth switching between decoding and animation modes
 
-- Fast and appropriate response to simulated weather conditions
-- Functionality in various lighting conditions (day, night, and overcast)
-- Protective mechanism to prevent motor damage
-- Potential for real-world application
+## Team Members
 
-## References
+- Al Muala Talal Al Maawali (ID: 135591)
+- Omar Masoud AL Alawi (ID: 123901)
 
-1. Atlas Magazine - Cyclone Shaheen in Oman: 162 million USD of insured losses
-2. Interlink Electronics - FSR 406 Data Sheet
-3. Mazidi, M. A., Naimi, S., & Naimi, S. (2017). The AVR microcontroller and embedded systems using assembly and C. Pearson Education.
+*Sultan Qaboos University*  
+*Department of Electrical & Computer Engineering*  
+*Course: ECCE5214 - Advanced Logic & Computer Interfacing*
 
-## Project Team
+## Additional Information
 
-- Al Muala Talal Almaawali (ID: 135591)
-- Omar Masoud Alalawi (ID: 123901)
-
-*Sultan Qaboos University, Department of Electrical and Computer Engineering*
-*Course: ECCE4227 - Embedded Systems*
+For more details on the PS/2 protocol and keycodes, refer to the PS/2 Keycode map in the project documentation.
