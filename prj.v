@@ -20,7 +20,7 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module prjjjjj(
+module prj(
 	input CLK,	//board clock
    input PS2_CLK,	//keyboard clock and data signals
    input PS2_DATA, sw,
@@ -153,6 +153,7 @@ module prjjjjj(
 	end
 
 endmodule
+
 
 
 
